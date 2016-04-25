@@ -1,4 +1,6 @@
 *.*
+bin/Doxyfile
+bin/latex/Makefile
 !*.java
 !*.ini
 !*.sql
