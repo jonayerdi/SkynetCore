@@ -4,3 +4,4 @@ bin/latex/Makefile
 !*.java
 !*.ini
 !*.sql
+!InformeRefactorizacion.docx
