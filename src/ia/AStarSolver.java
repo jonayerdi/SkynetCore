@@ -17,7 +17,7 @@ public class AStarSolver extends Solver {
 		Route route, routeTemp;
 		Recurso recurso;
 		int recursoId;
-		Solution[] sol = new Solution[incidencias.length];
+		Solution[] solutions = new Solution[incidencias.length];
 		log.log(getClass()+" started -> "+incidencias.length+" incidences / "+recursos.length+" resources", Logger.SOLVER);
 		if(incidencias.length>0 && recursos.length>0) {
 			log.log("Sorting incidences by priority", Logger.SOLVER);
@@ -42,7 +42,7 @@ public class AStarSolver extends Solver {
 					}
 					if(route!=null) {
 						recurso = recursos[recursoId];
-						sol[i] = new Solution(incidencias[i],recurso,route);
+						solutions[i] = new Solution(incidencias[i],recurso,route);
 						recurso.estado = Recurso.ESTADO_EN_RUTA;
 						log.log("Resource ID = "+recurso.id+" assigned to incidence ID = "+incidencias[i].id+", route takes "+route.getTimeString(), Logger.SOLVER);
 					}
@@ -50,7 +50,7 @@ public class AStarSolver extends Solver {
 			}
 		}
 		log.log(getClass()+" solved", Logger.SOLVER);
-		return sol;
+		return solutions;
 	}
 	
 }

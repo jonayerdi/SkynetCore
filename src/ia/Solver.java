@@ -26,8 +26,8 @@ private static final long serialVersionUID = 1L;
 	Incidencia[] incidencias;
 	Map<Integer,Incidencia> recursoIncidencia;
 	
-	IncidenciaFacade ifac;
-	RecursoFacade rfac;
+	IncidenciaFacade incidenciaFacade;
+	RecursoFacade recursoFacade;
 	
 	public Solver(List<String> settings) {
 		
@@ -44,8 +44,8 @@ private static final long serialVersionUID = 1L;
 	
 	public void init() {
 		log = Configuration.getCurrent().getLogger();
-		ifac = new IncidenciaFacade();
-		rfac = new RecursoFacade();
+		incidenciaFacade = new IncidenciaFacade();
+		recursoFacade = new RecursoFacade();
 		recursoIncidencia = Configuration.getCurrent().getRecursoIncidencia();
 	}
 	
@@ -58,7 +58,7 @@ private static final long serialVersionUID = 1L;
 	private synchronized void setRecursos() {
 		recursos = new Recurso[recursosId.length];
 		for(int i = 0 ; i < recursos.length ; i++) {
-			recursos[i] = rfac.getRecurso(recursosId[i].id);
+			recursos[i] = recursoFacade.getRecurso(recursosId[i].id);
 			recursos[i].setConnection(recursosId[i].getConnection());
 		}
 	}
@@ -68,7 +68,7 @@ private static final long serialVersionUID = 1L;
 			lock.acquire();
 			log.log(getClass()+" started");
 			setRecursos();
-			incidencias = ifac.getIncidenciasAbiertas();
+			incidencias = incidenciaFacade.getIncidenciasAbiertas();
 			assign(solve());
 		}
 	}
@@ -115,8 +115,8 @@ private static final long serialVersionUID = 1L;
 		log.log(getClass()+" finished");
 	}
 
-	public int compare(Incidencia arg0, Incidencia arg1) {
-		return arg0.prioridad-arg1.prioridad;
+	public int compare(Incidencia incidencia1, Incidencia incidencia2) {
+		return incidencia1.prioridad-incidencia2.prioridad;
 	}
 	
 }
