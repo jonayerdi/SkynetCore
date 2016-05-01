@@ -47,28 +47,31 @@ public class TestAStarSolver extends EasyMockSupport implements WindowListener {
 	@Before
 	public void data() {
 		Recurso r1 = new Recurso();
+		Recurso r2 = new Recurso();
+		Recurso r3 = new Recurso();
 		r1.id = 1;
-		r1.estacionId = 1;
-		r1.tipo = 1;
-		r1.estado = 0;
-		r1.lat = 0;
-		r1.lng = 0;
-		recursos = new Recurso[] {r1};
+		r2.id = 2;
+		r3.id = 7;
+		recursos = new Recurso[] {r1,r2,r3};
 	}
 	
 	@Test
 	public void testSolver() {
 		log.log("class ia.AStarSolver scheduled",0);
 		log.log("class ia.AStarSolver started");
-		log.log("class ia.AStarSolver started -> 1 incidences / 1 resources",5);
+		log.log("class ia.AStarSolver started -> 1 incidences / 3 resources",5);
 		log.log("Sorting incidences by priority",5);
 		log.log("Sorting ended",5);
 		log.log("Solving incidence ID = 87 TYPE = 1",5);
 		log.log("Incidence ID = 87 resource found ID = 1 route takes 45 mins",5);
+		log.log("Resource ID = 2 assigned to incidence ID = 87, route takes 45 mins", 5);
 		log.log("class ia.AStarSolver solved",5);
 		log.log("class ia.AStarSolver solved, sending messages");
-		log.log("Error sending incidencia NULL",3);
+		log.log("Sending incidencia 87 to recurso 2, route takes 45 mins", 0);
+		log.log("Error sending incidencia 87#43.27895#-1.984636",3);
 		log.log("Sending void routes to previously busy resources");
+		log.log("Sending void route to recurso 2", 0);
+		log.log("Error sending void route to recurso 2", 3);
 		log.log("class ia.AStarSolver finished");
 		replayAll();
 		Configuration.getCurrent().getSolver().scheduleSolution(recursos);
