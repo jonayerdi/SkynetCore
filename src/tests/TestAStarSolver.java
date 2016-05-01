@@ -37,9 +37,6 @@ public class TestAStarSolver extends EasyMockSupport implements WindowListener {
 		//Logger MOCK
 		log = strictMock(Logger.class);
 		Configuration.getCurrent().setLogger(log);
-		//Window
-		window = new MainWindow(this);
-		window.setVisible(true);
 		//Solver
 		Configuration.getCurrent().getSolver().init();
 	}

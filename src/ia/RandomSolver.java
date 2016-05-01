@@ -23,16 +23,7 @@ public class RandomSolver extends Solver {
 		log.log(getClass()+" started -> "+incidencias.length+" incidences / "+recursos.length+" resources", Logger.SOLVER);
 		if(incidencias.length>0 && recursos.length>0) {
 			for(int i = 0 ; i < solutions.length ; i++) {
-				try {
-					recursoId = 0;
-					log.log("Solving incidence ID = "+incidencias[i].id+" TYPE = "+incidencias[i].tipo, Logger.SOLVER);
-					while(recursos[recursoId].tipo!=incidencias[i].tipo || recursos[recursoId].estado!=Recurso.ESTADO_LIBRE) recursoId++;
-					recurso = recursos[recursoId];
-					route = new Route(recurso,incidencias[i]);
-					solutions[i] = new Solution(incidencias[i],recurso,route);
-					recurso.estado = Recurso.ESTADO_EN_RUTA;
-					log.log("Resource ID = "+recurso.id+" assigned to incidence ID = "+incidencias[i].id+", route takes "+route.getTimeString(), Logger.SOLVER);
-				} catch(Exception e){}
+				resolverIncidencia(i);
 			}
 		}
 		log.log(getClass()+" solved", Logger.SOLVER);

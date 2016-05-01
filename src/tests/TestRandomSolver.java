@@ -32,14 +32,11 @@ public class TestRandomSolver extends EasyMockSupport implements WindowListener 
 		} catch(Exception e) {
 			fail("Error loading config file");
 		}
-		//AStarSolver
+		//RandomSolver
 		Configuration.getCurrent().setSolver(new RandomSolver(null));
 		//Logger MOCK
 		log = strictMock(Logger.class);
 		Configuration.getCurrent().setLogger(log);
-		//Window
-		window = new MainWindow(this);
-		window.setVisible(true);
 		//Solver
 		Configuration.getCurrent().getSolver().init();
 	}
