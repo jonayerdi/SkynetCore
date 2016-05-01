@@ -1,6 +1,6 @@
 package configuration;
 
-import ia.*;
+import ia.Solver;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,9 +17,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import ui.*;
-import connections.*;
-import database.*;
+import ui.MainWindowSettings;
+import connections.Connection;
+import connections.MulticastConnection;
+import database.Incidencia;
+import database.Recurso;
+import database.SQLConnector;
 
 public class Configuration implements Serializable {
 
