@@ -35,7 +35,7 @@ public class TestAStarSolver extends EasyMockSupport implements WindowListener {
 		//AStarSolver
 		Configuration.getCurrent().setSolver(new AStarSolver(null));
 		//Logger MOCK
-		log = strictMock(Logger.class);
+		log = mock(Logger.class);
 		Configuration.getCurrent().setLogger(log);
 		//Solver
 		Configuration.getCurrent().getSolver().init();
@@ -60,11 +60,11 @@ public class TestAStarSolver extends EasyMockSupport implements WindowListener {
 		log.log("Sorting incidences by priority",5);
 		log.log("Sorting ended",5);
 		log.log("Solving incidence ID = 87 TYPE = 1",5);
-		log.log("Incidence ID = 87 resource found ID = 1 route takes 45 mins",5);
-		log.log("Resource ID = 2 assigned to incidence ID = 87, route takes 45 mins", 5);
+		log.log("Incidence ID = 87 resource found ID = 1 route takes 46 mins",5);
+		log.log("Resource ID = 2 assigned to incidence ID = 87, route takes 46 mins", 5);
 		log.log("class ia.AStarSolver solved",5);
 		log.log("class ia.AStarSolver solved, sending messages");
-		log.log("Sending incidencia 87 to recurso 2, route takes 45 mins", 0);
+		log.log("Sending incidencia 87 to recurso 2, route takes 46 mins", 0);
 		log.log("Error sending incidencia 87#43.27895#-1.984636",3);
 		log.log("Sending void routes to previously busy resources");
 		log.log("Sending void route to recurso 2", 0);

@@ -35,7 +35,7 @@ public class TestRandomSolver extends EasyMockSupport implements WindowListener 
 		//RandomSolver
 		Configuration.getCurrent().setSolver(new RandomSolver(null));
 		//Logger MOCK
-		log = strictMock(Logger.class);
+		log = mock(Logger.class);
 		Configuration.getCurrent().setLogger(log);
 		//Solver
 		Configuration.getCurrent().getSolver().init();
@@ -59,10 +59,10 @@ public class TestRandomSolver extends EasyMockSupport implements WindowListener 
 		log.log("class ia.RandomSolver started");
 		log.log("class ia.RandomSolver started -> 1 incidences / 1 resources",5);
 		log.log("Solving incidence ID = 87 TYPE = 1",5);
-		log.log("Resource ID = 1 assigned to incidence ID = 87, route takes 45 mins",5);
+		log.log("Resource ID = 1 assigned to incidence ID = 87, route takes 46 mins",5);
 		log.log("class ia.RandomSolver solved",5);
 		log.log("class ia.RandomSolver solved, sending messages");
-		log.log("Sending incidencia 87 to recurso 1, route takes 45 mins",0);
+		log.log("Sending incidencia 87 to recurso 1, route takes 46 mins",0);
 		log.log("Error sending incidencia 87#43.27895#-1.984636",3);
 		log.log("Sending void routes to previously busy resources");
 		log.log("Sending void route to recurso 1",0);
